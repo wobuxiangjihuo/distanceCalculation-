@@ -30,7 +30,7 @@
     /** 2.用mysql内置函数来计算
     
     SELECT 
-    t_userId,(6371393 * ACOS(COS(RADIANS(39.914504)) * COS(RADIANS(t_latitude)) * COS(RADIANS(116.425249 - t_longitude)) + SIN(RADIANS(39.914504)) * SIN(RADIANS(t_latitude)))
+    t_userId,(6378100 * ACOS(COS(RADIANS(39.914504)) * COS(RADIANS(t_latitude)) * COS(RADIANS(116.425249 - t_longitude)) + SIN(RADIANS(39.914504)) * SIN(RADIANS(t_latitude)))
 	   ) AS distance,
     t_longitude, t_latitude FROM  t_user_location ORDER BY distance; 
     
@@ -40,6 +40,7 @@
              这样的话,会按相对位置距离从小到大排序,可以取需要的前N个数据
              
              
+    可靠度: 上述select查询语句直线距离结果 与 高德API直线距离计算 比较, 误差:每50000米 误差3米   
       
              
              
